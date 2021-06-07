@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  --bg: #3caaff;
+  --nav-height: 50px; 
+}
+
+html {height: 100vh}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: black;
+  line-height: 1.5em;
+  
+  height: 100%;
+}
+
+/* Navbar */
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 255, 255, 50%);
+  z-index: 1;
+}
+
+nav:hover {background: cyan}
+
+#nav {
+  /*---#nav exists solely to limit the width of the bar*/
+  max-width: 800px;
+  margin: 0 auto;
+  height: var(--nav-height);
+  
+  text-align: center;
+  font-size: 20px;
+  
+  /*---I love grids*/
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/*---Format text*/
+#nav > a {
+  display: block;
+  text-decoration: none;
+  line-height: var(--nav-height);
+  color: black;
+  
+  transition-duration: 200ms;
+}
+
+#nav > a:hover {background: orange}
+
+.scrolled-down {
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.scrolled-up {
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Jumbotron */
+#jumbotron {
+  width: 100%;
+  height: calc(100 * var(--vh));
+  transform: translate(0, calc(-1 * var(--nav-height)) );
+  margin-bottom: 1em;
+}
+
+#jumbotron > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#jumboh1 > h1 {
+  margin: 0;
+  line-height: initial;
+}
+
+#jumboh1 {
+  /*Should stay at torso level*/
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  left: 40%;
+  bottom: 5%;
+}
+
+@media (max-width: 500px) {
+  #jumboh1 { left: 20px }
+}
+
+/* Content */
+.content {
+  display: block;
+  max-width: 850px;
+  background: white;
+  padding: 1em 1em;
+  margin: auto;
+  border: 10px solid var(--bg);
+  border-radius: 30px;
+}
+
+/* Cards */
+.question {
+  text-align: center;
+}
+
+.question span {
+  background: white;
+  padding: 0 0.5em;
+  border-radius: 50px;
+}
+
+/* https://looka.com/onboarding  */
+
+#cards {
+  width: 90%;
+  margin: auto;  
+  display: grid;
+  justify-items: center;
+  --e: 3;
+  grid-template-columns: repeat(var(--e), minmax(290px, 1fr));
+  grid-gap: 10px;
+  
+}
+
+@media (max-width: 950px){
+  #cards {
+    --e: 2;
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px){
+  #cards {
+    --e: 1;
+    width: 90%;
+  }
+}
+
+@media (max-width: 440px){
+  .question {
+    font-size: 25px;
+  }
+}
+
+.card {
+  display: block;
+  min-width: 280px;
+  min-height: 400px;
+  background: #f2eecb;
+  border-radius: 2%;
+  margin: 10px;
+  border: 5px solid hsl(0, 0%, 0%, 0);
+  transition-duration: 200ms;
+}
+
+.card:hover {
+  /*--accent is a color defined in each div.card*/
+  box-shadow: 5px 5px gray;
+  border: 5px solid var(--accent);
+}
+
+.card img {
+  width: 50%;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid black;
+  background: var(--accent);
+  margin-top: 5px;
+}
+
+.card h3 {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.card > p {
+  margin-top: auto;
+  padding: 10px;
+}
