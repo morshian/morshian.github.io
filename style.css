@@ -2,6 +2,7 @@
 
 * {
   --bg: #3caaff;
+  --card-color: #f2eecb;
   --nav-height: 50px; 
 }
 
@@ -16,7 +17,7 @@ body {
   color: black;
   line-height: 1.5em;
   
-  height: 100%;
+  height: auto;
 }
 
 /* Navbar */
@@ -74,7 +75,6 @@ nav:hover {background: cyan}
   width: 100%;
   height: calc(100 * var(--vh));
   transform: translate(0, calc(-1 * var(--nav-height)) );
-  margin-bottom: 1em;
 }
 
 #jumbotron > img {
@@ -125,53 +125,35 @@ nav:hover {background: cyan}
 
 /* https://looka.com/onboarding  */
 
-#cards {
+/* I forwent an id for the cards and image gallery, and used a class */
+.grid-container {
   width: 90%;
   margin: auto;  
+  /* Grids are neater than media queries */
   display: grid;
   justify-items: center;
-  --e: 3;
-  grid-template-columns: repeat(var(--e), minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 10px;
   
-}
-
-@media (max-width: 950px){
-  #cards {
-    --e: 2;
-    width: 100%;
-  }
-}
-
-@media (max-width: 650px){
-  #cards {
-    --e: 1;
-    width: 90%;
-  }
+  transition-duration: 200ms;
 }
 
 @media (max-width: 440px){
-  .question {
-    font-size: 25px;
-  }
+  .question {font-size: 25px}
 }
 
 .card {
   display: block;
   min-width: 280px;
   min-height: 400px;
-  background: #f2eecb;
+  background: var(--card-color);
   border-radius: 2%;
   margin: 10px;
   border: 5px solid hsl(0, 0%, 0%, 0);
-  transition-duration: 200ms;
+  box-shadow: 5px 5px gray;
 }
 
-.card:hover {
-  /*--accent is a color defined in each div.card*/
-  box-shadow: 5px 5px gray;
-  border: 5px solid var(--accent);
-}
+.card:hover {border: 5px solid var(--accent)}
 
 .card img {
   width: 50%;
@@ -192,4 +174,49 @@ nav:hover {background: cyan}
 .card > p {
   margin-top: auto;
   padding: 10px;
+}
+
+/* Image gallery */
+.grid-container > figure {
+  background: var(--card-color);
+  border-radius: 5px;
+  margin: 10px;
+  box-shadow: 5px 5px gray;
+  border: 5px solid hsl(0, 0%, 0%, 0);
+}
+
+.grid-container > figure:hover {border: 5px solid lightgray}
+
+.grid-container > figure > img {
+  width: calc(100% - 20px);
+  margin: 10px;
+  margin-bottom: 0;
+  border: 1px solid black;
+}
+
+.grid-container figcaption {
+  padding: 1em;
+  text-align: center;
+}
+
+/* Footer */
+
+footer {
+  background: gray;
+  font-size: 14px;
+  text-align: center;
+  height: 6rem;
+  padding: 0;
+}
+
+footer > p {
+  margin: 0;
+  padding: 0;
+}
+
+footer > img {
+  vertical-align: middle;
+  height: 4rem;
+  margin: 0;
+  border-radius: 5px;
 }

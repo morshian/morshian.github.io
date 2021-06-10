@@ -31,3 +31,11 @@ function define(){
 
 window.addEventListener('resize', define);
 define();
+
+// Copy the alt attribute of every image into it's title attrbiute
+var images = document.getElementsByTagName('img');
+Array.from(images).forEach(function(element) {
+  element.setAttribute('title', element.getAttribute('alt'))
+});
+//except the jumbotron
+document.getElementById('reverse-title').removeAttribute('title');
