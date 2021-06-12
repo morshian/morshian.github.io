@@ -60,5 +60,6 @@ function roll(){
   }
   
   video.onplay = function(){ video.muted = !video.muted }
+  video.play(); //Fuck you, microsoft edge
   document.title = "You just got rick rolled";
 }
