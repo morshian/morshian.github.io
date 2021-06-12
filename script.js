@@ -39,3 +39,26 @@ Array.from(images).forEach(function(element) {
 });
 //except the jumbotron
 document.getElementById('reverse-title').removeAttribute('title');
+
+//Rick roll
+function roll(){
+  var video = document.querySelector('video');
+  video.style.display = 'block';
+  
+  ['nav','main','footer'].forEach(function(tag) {
+    document.querySelector(tag).style.display = 'none'
+  }); 
+  document.body.style.backgroundColor = 'black';
+  
+  var elem = document.documentElement;
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) { /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+  
+  video.onplay = function(){ video.muted = !video.muted }
+  document.title = "You just got rick rolled.";
+}
