@@ -60,5 +60,5 @@ function roll(){
   }
   
   video.onplay = function(){ video.muted = !video.muted }
-  document.title = "You just got rick rolled.";
+  document.title = "You just got rick rolled";
 }
